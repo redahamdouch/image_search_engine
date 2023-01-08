@@ -1,13 +1,31 @@
 # Image Search Engine
 ![matrix](imgs/matrix.png)
-*visualization showing image clusters; similar images are in the same cluster*
+*Visualization showing image clusters; similar images are in the same cluster*
 
 # Table of Contents
-[1- Project objective and experimental protocol](#1)
-[2- Analysis of the experimental results](#2)
-    [1- Histogram method](#2-1)
+1. [Project objective and experimental protocol](#1)
+2. [Analysis of the experimental results](#2)
+    1. [Histogram method](#2-1)
+        1. [Influence of the norm](#2-1-a)
+        2. [Varying the size of the bins](#2-1-b)
+        3. [Search execution time](#2-1-c)
+        4. [Conclusion](#2-1-d)
+    2. [Visual Bag of Words Method with a linear index](#2-2)
+        1. [Variation of norms and normalization](#2-2-a)
+        2. [Variation in vocabulary size](#2-2-b)
+        3. [Comparison of weightings between two vocabularies](#2-2-c)
+        4. [Execution time as a function of vocabulary size](#2-2-d)
+    3. [Visual Bag of Words Method with an Inverted Index](#2-3)
+        1. [Variation of the vocabulary size](#2-3-a)
+        2.  [Computation time as a function of vocabulary size ](#2-3-b)
+        3. [Conclusion](#2-3-c)
+    4. [VLAD Method](#2-4)
+        1. [Variation of PCA dimensions](#2-4-a)
+        2. [Variation of vocabulary size](#2-4-b)
+        3. [Analysis of the execution time ](#2-4-c)
+        4. [Conclusion](#2-4-d)
+3. [General Conclusion](#3)
 
-#### a) Influence of the norm <a name="2-1-a"></a>
 
 
 
@@ -96,7 +114,7 @@ We wanted to see the interest of the size of the vocabulary. We first understood
 - *Evolution of the mAP score as a function of vocabulary size:*
 ![2-b-2](imgs/2-b-2.png)
 
-#### c) Comparison of weightings between two vocabularies <a name="2-2-c"></a>
+#### c) Comparison of weightings between two vocabularies <a 
 - We compared the scores of the weighting methods between two extreme sizes of the vocabulary (50 and 5000). It can be seen that the weighting idf.racine(tf) does not work for a small vocabulary size but it gives a better result when the vocabulary grows.
 - *Recall curves for precision weighting with vocabulary 50:*
 ![2-c-1](imgs/2-c-1.png)
