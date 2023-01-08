@@ -114,7 +114,7 @@ We wanted to see the interest of the size of the vocabulary. We first understood
 - *Evolution of the mAP score as a function of vocabulary size:*
 ![2-b-2](imgs/2-b-2.png)
 
-#### c) Comparison of weightings between two vocabularies <a 
+#### c) Comparison of weightings between two vocabularies <a name="2-2-c"></a> 
 - We compared the scores of the weighting methods between two extreme sizes of the vocabulary (50 and 5000). It can be seen that the weighting idf.racine(tf) does not work for a small vocabulary size but it gives a better result when the vocabulary grows.
 - *Recall curves for precision weighting with vocabulary 50:*
 ![2-c-1](imgs/2-c-1.png)
