@@ -73,13 +73,16 @@ We varied the norm for calculating the distances between the L1 norm  and the L2
     - Score mAP with L2= 0.74
 
 - *Comparison of l1 l2 norms with recall/accuracy curves:*
+
 ![1-a](imgs/1-a.png)
 
 #### b) Varying the size of the bins<a name="2-1-b"></a>
 By varying the size of the bins, we observe that the more numerous the bin, the better the mAP score up to a certain threshold. To find this optimal threshold we varied the size of [16, 512, 1728 , 4096 , 8000 ] bins. We found 4096 "bins" as the optimal value for the emAP score and for the Recall-Precision criterion. Going beyond 4096 bins would be useless because the precision will not be better.
 - *Display of the evolution of the mAP score depending on the number of bins:*
+
 ![1-b-1](imgs/1-b-1.png)
 - *Display of recall/accuracy curves as a function of the number of bins:*
+
 ![1-b-2](imgs/1-b-2.png)
 
 #### c) Search execution time <a name="2-1-c"></a>
@@ -105,26 +108,32 @@ We set the vocabulary size to 1000. We wanted to analyse the impact of the chang
     - Score mAP L1 non-normalized = 0.50
     - Score mAP L2 non-normalized = 0.67
 - *Display of precision recall curves according to the chosen norm, for normalised and non-normalised word bags (Vocabulary size: 1000 words):*
+
 ![2-a](imgs/2-a.png)
 
 #### b) Variation in vocabulary size <a name="2-2-b"></a>
 We wanted to see the interest of the size of the vocabulary. We first understood that the larger the vocabulary, the better the results as shown in the first two graphs.
 - *Precision recall curves as a function of vocabulary size:*
+
 ![2-b-1](imgs/2-b-1.png)
 - *Evolution of the mAP score as a function of vocabulary size:*
+
 ![2-b-2](imgs/2-b-2.png)
 
 #### c) Comparison of weightings between two vocabularies <a name="2-2-c"></a> 
 - We compared the scores of the weighting methods between two extreme sizes of the vocabulary (50 and 5000). It can be seen that the weighting idf.racine(tf) does not work for a small vocabulary size but it gives a better result when the vocabulary grows.
 - *Recall curves for precision weighting with vocabulary 50:*
+
 ![2-c-1](imgs/2-c-1.png)
 - *Weighting precision recall curves with vocabulary 5000:*
+
 ![2-c-2](imgs/2-c-2.png)
 
 #### d) Execution time as a function of vocabulary size <a name="2-2-d"></a>
 We have calculated the execution time of a search for a linear index. We see that the time is linearly dependent on the vocabulary.
 
 - *Average computation time as a function of vocabulary size:*
+
 ![2-d](imgs/2-d.png)
 
 ### 3- Visual Bag of Words Method with an Inverted Index <a name="2-3"></a>
@@ -133,14 +142,17 @@ We have calculated the execution time of a search for a linear index. We see tha
 
 We can see that the scores obtained are very similar to the linear index. We can therefore say that the vocabulary size has the same impact on the search scores.
 - *Precision recall curves as a function of vocabulary size:*
+
 ![3-a-1](imgs/3-a-1.png)
 - *Evolution of the mAP score as a function of vocabulary size:*
+
 ![3-a-2](imgs/3-a-2.png)
 
 ### b) Computation time as a function of vocabulary size <a name="2-3-b"></a>
 Looking at the graph, we understand that the compute time of a search is higher than the linear index method. This is problematic because the search in the inverted index should theoretically be faster than in a linear index. The reason for such a high time is that we use vocabulary sizes that are too small. This has an impact on the size of the short-list to be inspected to find the closest image, because with a small vocabulary size, the short-list consists of all the documents in the corpus. This means that the short-list is a considerable waste of time. Increasing the size of the vocabulary could result in much smaller shortlists and therefore a lower execution time than the linear index search.
 
 - *Average calculation time as a function of vocabulary size:*
+
 ![3-b](imgs/3-b.png)
 
 #### c) Conclusion <a name="2-3-c"></a>
@@ -152,6 +164,7 @@ We can notice that the L1 norm is the best for calculating distances. This metho
  PCA allows to reduce the number of components and to highlight only the relevant information. From these graphs we can observe that PCA helps to improve the accuracy and the mAP score up to a certain threshold, where it becomes inefficient. The VLAD system with a PCA of 50 components is the most optimal for the mAP score. Going beyond 50 components results in a loss of performance.
 
  - *Display of recall/accuracy curves as a function of the number of PCA dimensions*
+
  ![4-a-1](imgs/4-a-1.png)
 
  - *Display of the evolution of the score map according to the number of dimensions of the PCA*
@@ -161,15 +174,19 @@ We can notice that the L1 norm is the best for calculating distances. This metho
 #### b) Variation of vocabulary size <a name="2-4-b"></a>
   We used the VLAD algorithm without PCA in order to directly visualise the impact of vocabulary size on the metrics. It can be seen that the VLAD descriptor works more accurately with a small vocabulary size. On the two graphs we can see that the optimal size is 50.
   - *Display of recall/accuracy curves as a function of vocabulary size*
+
   ![4-b-1](imgs/4-b-1.png)
 
   - *Display of the evolution of the score map according to the size of the vocabulary*
+
   ![4-b-2](imgs/4-b-2.png)
 #### c) Analysis of the execution time <a name="2-4-c"></a>
   We could notice that the time evolves linearly according to our two criteria. When we increase the number of components, in addition to causing a loss of precision, the execution time increases.
   - *Average computation time as a function of the size of the vocabulary*
+
 ![4-c-1](imgs/4-c-1.png)
 - *Average calculation time as a function of the number of principal components*
+
 ![4-c-2](imgs/4-c-2.png)
 
 #### d) Conclusion <a name="2-4-d"></a>
